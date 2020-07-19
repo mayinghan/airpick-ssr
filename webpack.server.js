@@ -1,14 +1,22 @@
 const path = require('path');
 const webpackNodeExternals = require('webpack-node-externals');
-
+const antStyles = /antd\/.*?\/style.*?/;
 module.exports = {
  target: 'node',
- entry: './src/server/index.js',
+ entry: './server/index.js',
  output: {
    filename: 'bundle.js',
    path: path.resolve(__dirname, 'build-server'),
  },
- externals: [webpackNodeExternals()], // excludes node modules in Webpack
+ externals: [webpackNodeExternals(
+   {
+     allowlist: [antStyles]
+   }
+ ),
+webpackNodeExternals({
+  modulesDir: path.resolve(__dirname, 'node_modules'),
+  allowlist: [antStyles],
+})], // excludes node modules in Webpack
  module: {
    rules: [
      {
@@ -19,6 +27,9 @@ module.exports = {
          options: {
            babelrc: false,
            presets: ['@babel/preset-env', '@babel/preset-react'],
+           plugins: [
+             ['import', { libraryName: 'antd', style: 'css'}]
+           ],
          },
        },
      },

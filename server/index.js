@@ -1,10 +1,10 @@
+import App from '../src/component/App';
+import React from 'react';
 import express from 'express';
- import React from 'react';
- import { renderToString } from 'react-dom/server';
- import fs from 'fs';
- import App from '../common/App';
- 
- const PORT = process.env.PORT || 3000;
+import fs from 'fs';
+import { renderToString } from 'react-dom/server';
+
+const PORT = process.env.PORT || 3000;
  const server = express();
  
  server.use('^/$', (req, res) => {
