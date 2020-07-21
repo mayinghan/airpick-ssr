@@ -8,15 +8,16 @@ module.exports = {
    filename: 'bundle.js',
    path: path.resolve(__dirname, 'build-server'),
  },
- externals: [webpackNodeExternals(
-   {
-     allowlist: [antStyles]
-   }
- ),
-webpackNodeExternals({
-  modulesDir: path.resolve(__dirname, 'node_modules'),
-  allowlist: [antStyles],
-})], // excludes node modules in Webpack
+//  externals: [webpackNodeExternals(
+//    {
+//      allowlist: [antStyles]
+//    }
+//  ),
+// webpackNodeExternals({
+//   modulesDir: path.resolve(__dirname, 'node_modules'),
+//   allowlist: [antStyles],
+// })], // excludes node modules in Webpack
+ externals: [webpackNodeExternals()],
  module: {
    rules: [
      {
@@ -24,13 +25,13 @@ webpackNodeExternals({
        exclude: /node_modules/,
        use: {
          loader: 'babel-loader',
-         options: {
-           babelrc: false,
-           presets: ['@babel/preset-env', '@babel/preset-react'],
-           plugins: [
-             ['import', { libraryName: 'antd', style: 'css'}]
-           ],
-         },
+        //  options: {
+        //    babelrc: false,
+        //    presets: ['@babel/preset-env', '@babel/preset-react'],
+        //   //  plugins: [
+        //   //    ['import', { libraryName: 'antd', style: 'css'}]
+        //   //  ],
+        //  },
        },
      },
      // we use url-loader as loader for webpack which transforms files into base64 URIs

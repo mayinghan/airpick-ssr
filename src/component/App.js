@@ -1,6 +1,6 @@
 import './App.css';
 
-import { Button } from 'antd'
+import Button from './Button';
 import React from 'react';
 import logo from './logo.svg';
 
@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <Button type="primary">Yes</Button>
+        <Button></Button>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
